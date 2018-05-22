@@ -173,7 +173,7 @@ docker run -d -p 80:80 owncloud:8.1
 O objetivo deste arquivo é a instalação facilitada do Docker, aguardar a sua criação e inicia-lo onde rodamos o comando para importar do repositório oficial da docker o repositório [OwnCloud](https://hub.docker.com/_/owncloud/), assim completar o objetivo passado em nossa descrição.
 
 
-## EXECUTANDO O TERRAFORM E CONECTANDO AO APLICATIVO
+## EXECUTANDO O TERRAFORM
 ​
 Crie todos os arquivos com extensão .tf dentro de um diretório, de permissão de execução para o arquivo .sh `chmod +x template.sh`, substitua os valores na `variavles.tf` conforme explicado na primeira parte do artigo e, em seguida, execute o comando:
 
@@ -193,11 +193,29 @@ $ terraform apply
 ```
 O comando terraform apply é usado para aplicar as mudanças necessárias para atingir o estado desejado da configuração ou o conjunto predeterminado de ações geradas por um plano de execução do `terraform plan`.
 
+## CONECTANDO AO APLICATIVO
+
+Após executar o comando `terraform apply`, no painel AWS é possível verificar a instancia criada, para conectar na aplicação selecionamos o IP informado em IPv4 conforme mostrado na imagem abaixo:
+
+![ec2ipv4-serverowncloud](https://user-images.githubusercontent.com/39412518/40384584-54efbef8-5dda-11e8-975a-0b6edf79d4ed.png)
+
+Em um navegador web, é possível verificar o painel de acesso, onde os dados para login seguem abaixo:
+
+```bash
+Login: Admin
+Senha: Admin
+```
+![owncloud1dashboard](https://user-images.githubusercontent.com/39412518/40384583-54cc78c6-5dda-11e8-903f-41f2ef193167.png)
 
 
+Este é o painel final, onde podemos gerenciar os usurios, arquivos e diretórios.
+
+![owncloud2dashboard](https://user-images.githubusercontent.com/39412518/40384582-54a86472-5dda-11e8-8c8b-a14b9f1740e5.png)
 
 
-Para qualquer alteração não é necessário destruir a instância ou faze-lo manual, o Terraform é um gerenciado de infraestrutura por este motivo, ele gerencia completamente a sua infraestrutura, por um exemplo simples onde  é necessário alterar o nome de sua instancia:
+## ALTERAÇÕES NO TERRAFORM
+
+Para qualquer alteração não é necessário destruir a instância ou faze-lo manual, o Terraform é um gerenciador de infraestrutura por este motivo, ele gerencia completamente a sua infraestrutura, por um exemplo simples onde é necessário alterar o nome de sua instancia:
 
 1. Altere o arquivo `variables.tf`
 
